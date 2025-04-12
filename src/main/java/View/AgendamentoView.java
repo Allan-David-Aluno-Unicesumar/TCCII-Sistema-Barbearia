@@ -297,7 +297,7 @@ public class AgendamentoView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void iniciar() {
-        controller.atualizarTabela();
+        controller.atualizarTabelaAgendamentos();
         controller.atualizarCliente();
         controller.atualizarServico();
         controller.atualizarUsuario();
