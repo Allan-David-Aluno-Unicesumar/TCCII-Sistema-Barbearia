@@ -34,7 +34,7 @@ public class AgendamentoController {
         this.helper = new AgendamentoHelper(view);
     }
     
-    public void atualizarTabela(){
+    public void atualizarTabelaAgendamentos(){
         
         // Buscar lista de agendamentos no banco de dados
         EntityManager em = new JPAUtil().getEntityManager();
@@ -100,9 +100,9 @@ public class AgendamentoController {
     
     public void agendar() {
         
-       Agendamento agendamento = helper.obterModelo();
+        Agendamento agendamento = helper.obterModelo();
        
-       EntityManager em = new JPAUtil().getEntityManager();
+        EntityManager em = new JPAUtil().getEntityManager();
         em.getTransaction().begin();
             
         new AgendamentoDAO(em).insert(agendamento);
