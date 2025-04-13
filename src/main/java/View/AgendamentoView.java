@@ -90,6 +90,11 @@ public class AgendamentoView extends javax.swing.JFrame {
         }
         getContentPane().add(campoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 120, 30));
 
+        comboBoxServico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxServicoItemStateChanged(evt);
+            }
+        });
         getContentPane().add(comboBoxServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 120, 30));
 
         try {
@@ -174,6 +179,11 @@ public class AgendamentoView extends javax.swing.JFrame {
         
         controller.voltarParaMenuPrincipal();
     }//GEN-LAST:event_butVoltarActionPerformed
+
+    private void comboBoxServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxServicoItemStateChanged
+        
+        controller.atualizarValor();
+    }//GEN-LAST:event_comboBoxServicoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -300,6 +310,7 @@ public class AgendamentoView extends javax.swing.JFrame {
         controller.atualizarTabelaAgendamentos();
         controller.atualizarCliente();
         controller.atualizarServico();
+        controller.atualizarValor();
         controller.atualizarUsuario();
     }
 

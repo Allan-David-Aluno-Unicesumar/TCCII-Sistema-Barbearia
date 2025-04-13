@@ -6,14 +6,13 @@ package Controller.Helper;
 
 import Model.Usuario;
 import View.CadastroUsuarioView;
-import View.LoginView;
 import java.util.Date;
 
 /**
  *
  * @author allan
  */
-public class CadastroUsuarioHelper {
+public class CadastroUsuarioHelper implements IHelper{
     
     private final CadastroUsuarioView view;
 

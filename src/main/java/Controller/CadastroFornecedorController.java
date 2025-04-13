@@ -42,6 +42,8 @@ public class CadastroFornecedorController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso!");
+        
+        helper.limparTela();
     }
     
     public void voltarParaMenuPrincipal(){

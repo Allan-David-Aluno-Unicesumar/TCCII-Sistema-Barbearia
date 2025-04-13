@@ -11,7 +11,7 @@ import View.CadastroProdutoView;
  *
  * @author allan
  */
-public class CadastroProdutoHelper {
+public class CadastroProdutoHelper implements IHelper{
     
     private final CadastroProdutoView view;
 

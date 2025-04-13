@@ -42,6 +42,8 @@ public class CadastroProdutoController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+        
+        helper.limparTela();
     }
     
     public void voltarParaMenuPrincipal(){

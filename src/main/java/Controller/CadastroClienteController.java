@@ -42,6 +42,8 @@ public class CadastroClienteController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+        
+        helper.limparTela();
     }
     
     public void voltarParaMenuPrincipal(){

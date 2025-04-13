@@ -82,6 +82,12 @@ public class AgendamentoController {
         helper.preencherServicos(servicos);
     }
     
+    public void atualizarValor(){
+        
+        Servico servico = helper.obterServico();
+        helper.exibirValor(servico.getValorVenda());
+    }
+    
     public void atualizarUsuario(){
         
         // Buscar lista de usuarios no banco de dados
@@ -100,8 +106,10 @@ public class AgendamentoController {
     
     public void agendar() {
         
+        // Obtem objeto da tela
         Agendamento agendamento = helper.obterModelo();
-       
+        
+        // Salva no banco de dados
         EntityManager em = new JPAUtil().getEntityManager();
         em.getTransaction().begin();
             
@@ -110,6 +118,10 @@ public class AgendamentoController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Agendamento cadastrado com sucesso!");
+        
+        // Atualiza tabela
+        atualizarTabelaAgendamentos();
+        helper.limparTela();
     }
 
     public void voltarParaMenuPrincipal() {

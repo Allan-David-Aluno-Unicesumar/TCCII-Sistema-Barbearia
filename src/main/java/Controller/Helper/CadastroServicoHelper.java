@@ -11,7 +11,7 @@ import View.CadastroServicoView;
  *
  * @author allan
  */
-public class CadastroServicoHelper {
+public class CadastroServicoHelper implements IHelper{
     
     private final CadastroServicoView view;
 

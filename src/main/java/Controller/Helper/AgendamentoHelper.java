@@ -9,7 +9,6 @@ import Model.Cliente;
 import Model.Servico;
 import Model.Usuario;
 import View.AgendamentoView;
-import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author allan
  */
-public class AgendamentoHelper {
+public class AgendamentoHelper implements IHelper{
     
     private final AgendamentoView view;
 
@@ -72,10 +71,28 @@ public class AgendamentoHelper {
         }
     }
     
+    public Servico obterServico() {
+        return (Servico) view.getComboBoxServico().getSelectedItem();
+    }
+    
+    public Cliente obterCliente() {
+        return (Cliente) view.getComboBoxCliente().getSelectedItem();
+    }
+    
+    public Usuario obterUsuario() {
+        return (Usuario) view.getComboBoxUsuario().getSelectedItem();
+    }
+    
+    public void exibirValor(double valorVenda) {
+        view.getCampoValor().setText(String.valueOf(valorVenda));
+    }
+    
+    
+    
     public Agendamento obterModelo(){
-        Cliente cliente = (Cliente) view.getComboBoxCliente().getSelectedItem();
-        Servico servico = (Servico) view.getComboBoxServico().getSelectedItem();
-        Usuario usuario = (Usuario) view.getComboBoxUsuario().getSelectedItem();
+        Cliente cliente = obterCliente();
+        Servico servico = obterServico();
+        Usuario usuario = obterUsuario();
         double valor = Double.parseDouble(view.getCampoValor().getText());
         String data = view.getCampoData().getText()+" "+view.getCampoHora().getText();
         String observacao = view.getAreaObservacao().getText();
@@ -102,10 +119,8 @@ public class AgendamentoHelper {
         view.getAreaObservacao().setText(observacao);
         
     }
+    
     public void limparTela(){
-        view.getComboBoxCliente().setSelectedItem("");
-        view.getComboBoxServico().setSelectedItem("");
-        view.getComboBoxUsuario().setSelectedItem("");
         view.getCampoValor().setText("");
         view.getCampoData().setText("");
         view.getCampoHora().setText("");
@@ -113,7 +128,6 @@ public class AgendamentoHelper {
 
     }
 
-    
 
     
     

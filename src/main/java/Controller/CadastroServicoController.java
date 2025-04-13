@@ -42,6 +42,8 @@ public class CadastroServicoController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Serviço cadastrado com sucesso!");
+        
+        helper.limparTela();
     }
     
     public void voltarParaMenuPrincipal(){

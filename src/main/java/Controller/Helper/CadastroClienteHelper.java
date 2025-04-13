@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author allan
  */
-public class CadastroClienteHelper {
+public class CadastroClienteHelper implements IHelper{
     
     private final CadastroClienteView view;
 

@@ -6,13 +6,12 @@ package Controller.Helper;
 
 import Model.Fornecedor;
 import View.CadastroFornecedorView;
-import java.util.Date;
 
 /**
  *
  * @author allan
  */
-public class CadastroFornecedorHelper {
+public class CadastroFornecedorHelper implements IHelper{
     
     private final CadastroFornecedorView view;
 

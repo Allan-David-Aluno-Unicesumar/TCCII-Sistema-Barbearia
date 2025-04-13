@@ -42,6 +42,8 @@ public class CadastroUsuarioController {
         em.getTransaction().commit();
         em.close();
         JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+        
+        helper.limparTela();
     }
     
     public void voltarParaTelaLogin(){
