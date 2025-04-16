@@ -10,6 +10,7 @@ import View.CadastroFornecedorView;
 import View.CadastroProdutoView;
 import View.CadastroServicoView;
 import View.MenuPrincipalView;
+import View.VendaView;
 
 /**
  *
@@ -56,6 +57,13 @@ public class MenuPrincipalController {
         
         AgendamentoView agendamentoView = new AgendamentoView();
         agendamentoView.setVisible(true);
+        view.dispose();
+    }
+
+    public void abrirTelaVenda() {
+        
+        VendaView vendaView = new VendaView();
+        vendaView.setVisible(true);
         view.dispose();
     }
     

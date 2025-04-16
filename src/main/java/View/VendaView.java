@@ -4,27 +4,26 @@
  */
 package View;
 
-import Controller.AgendamentoController;
+import Controller.VendaController;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
  *
  * @author allan
  */
-public class AgendamentoView extends javax.swing.JFrame {
+public class VendaView extends javax.swing.JFrame {
     
-    private final AgendamentoController controller;
+    private final VendaController controller;
     
     /**
      * Creates new form Agenda
      */
-    public AgendamentoView() {
+    public VendaView() {
         initComponents();
-        controller = new AgendamentoController(this);
+        controller = new VendaController(this);
         iniciar();
     }
 
@@ -37,21 +36,27 @@ public class AgendamentoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        comboBoxUsuario = new javax.swing.JComboBox<>();
+        comboBoxFormaPagamento = new javax.swing.JComboBox<>();
         comboBoxCliente = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableAgendamentos = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
         campoHora = new javax.swing.JFormattedTextField();
         comboBoxServico = new javax.swing.JComboBox<>();
         campoData = new javax.swing.JFormattedTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        areaObservacao = new javax.swing.JTextArea();
+        campoSubvalorProduto = new javax.swing.JTextField();
+        comboBoxUsuario = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        comboBoxProduto = new javax.swing.JComboBox<>();
+        campoValorTotal = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         butVoltar = new javax.swing.JButton();
-        butAgendar = new javax.swing.JButton();
+        butGerarVenda = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        campoValor = new javax.swing.JTextField();
+        campoSubvalorServico = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -62,53 +67,79 @@ public class AgendamentoView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboBoxUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 120, 30));
+        comboBoxFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Pix", "Débito", "Crédito" }));
+        getContentPane().add(comboBoxFormaPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 120, 30));
 
-        getContentPane().add(comboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 120, 30));
+        getContentPane().add(comboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 120, 30));
 
         tableAgendamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Cliente", "Serviço", "Barbeiro", "Valor", "Data", "Hora", "Observação"
+                "Id", "Cliente", "Serviço", "Barbeiro", "Valor", "Data", "Hora"
             }
         ));
         jScrollPane1.setViewportView(tableAgendamentos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 320, 800, 160));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Observação");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 590, 160));
 
         try {
             campoHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(campoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 120, 30));
+        getContentPane().add(campoHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 120, 30));
 
         comboBoxServico.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboBoxServicoItemStateChanged(evt);
             }
         });
-        getContentPane().add(comboBoxServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 120, 30));
+        getContentPane().add(comboBoxServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 120, 30));
 
         try {
             campoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(campoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 120, 30));
+        getContentPane().add(campoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 120, 30));
+        getContentPane().add(campoSubvalorProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 120, 30));
 
-        areaObservacao.setColumns(20);
-        areaObservacao.setRows(5);
-        jScrollPane2.setViewportView(areaObservacao);
+        getContentPane().add(comboBoxUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 120, 30));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, -1, 90));
+        jLabel6.setFont(new java.awt.Font("Ink Free", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Selecionar Agendamento");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Forma de Pgto");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Produto");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
+
+        comboBoxProduto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxProdutoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(comboBoxProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 120, 30));
+        getContentPane().add(campoValorTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 120, 30));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Subvalor R$");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Valor Total R$");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
         butVoltar.setText("Voltar");
         butVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,52 +147,53 @@ public class AgendamentoView extends javax.swing.JFrame {
                 butVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(butVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+        getContentPane().add(butVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, 260, -1));
 
-        butAgendar.setBackground(new java.awt.Color(124, 0, 41));
-        butAgendar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        butAgendar.setForeground(new java.awt.Color(255, 255, 255));
-        butAgendar.setText("Agendar");
-        butAgendar.addActionListener(new java.awt.event.ActionListener() {
+        butGerarVenda.setBackground(new java.awt.Color(0, 153, 153));
+        butGerarVenda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        butGerarVenda.setForeground(new java.awt.Color(255, 255, 255));
+        butGerarVenda.setText("Gerar Venda");
+        butGerarVenda.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        butGerarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butAgendarActionPerformed(evt);
+                butGerarVendaActionPerformed(evt);
             }
         });
-        getContentPane().add(butAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 210, 50));
+        getContentPane().add(butGerarVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 260, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Hora");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Data");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
-        getContentPane().add(campoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 120, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, -1, -1));
+        getContentPane().add(campoSubvalorServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 120, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Valor R$");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+        jLabel7.setText("Subvalor R$");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Barbeiro");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Serviço");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cliente");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/fundo-agenda.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/fundo-venda.jpg"))); // NOI18N
         jLabel1.setText("jLabel2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 999, 607));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 160, 30));
@@ -170,10 +202,10 @@ public class AgendamentoView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void butAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgendarActionPerformed
+    private void butGerarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGerarVendaActionPerformed
         
-        controller.agendar();
-    }//GEN-LAST:event_butAgendarActionPerformed
+        controller.vender();
+    }//GEN-LAST:event_butGerarVendaActionPerformed
 
     private void butVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVoltarActionPerformed
         
@@ -182,8 +214,13 @@ public class AgendamentoView extends javax.swing.JFrame {
 
     private void comboBoxServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxServicoItemStateChanged
         
-        controller.atualizarValor();
+        controller.atualizarValorServico();
     }//GEN-LAST:event_comboBoxServicoItemStateChanged
+
+    private void comboBoxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProdutoItemStateChanged
+        
+        controller.atualizarValorProduto();
+    }//GEN-LAST:event_comboBoxProdutoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -202,14 +239,18 @@ public class AgendamentoView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgendamentoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgendamentoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgendamentoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgendamentoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -218,19 +259,12 @@ public class AgendamentoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgendamentoView().setVisible(true);
+                new VendaView().setVisible(true);
             }
         });
     }
 
-    public JTextArea getAreaObservacao() {
-        return areaObservacao;
-    }
-
-    public void setAreaObservacao(JTextArea areaObservacao) {
-        this.areaObservacao = areaObservacao;
-    }
-
+    
     public JFormattedTextField getCampoData() {
         return campoData;
     }
@@ -247,12 +281,28 @@ public class AgendamentoView extends javax.swing.JFrame {
         this.campoHora = campoHora;
     }
 
-    public JTextField getCampoValor() {
-        return campoValor;
+    public JTextField getCampoSubvalorProduto() {
+        return campoSubvalorProduto;
     }
 
-    public void setCampoValor(JTextField campoValor) {
-        this.campoValor = campoValor;
+    public void setCampoSubvalorProduto(JTextField campoSubvalorProduto) {
+        this.campoSubvalorProduto = campoSubvalorProduto;
+    }
+
+    public JTextField getCampoSubvalorServico() {
+        return campoSubvalorServico;
+    }
+
+    public void setCampoSubvalorServico(JTextField campoSubvalorServico) {
+        this.campoSubvalorServico = campoSubvalorServico;
+    }
+
+    public JTextField getCampoValorTotal() {
+        return campoValorTotal;
+    }
+
+    public void setCampoValorTotal(JTextField campoValorTotal) {
+        this.campoValorTotal = campoValorTotal;
     }
 
     public JComboBox<String> getComboBoxCliente() {
@@ -261,6 +311,22 @@ public class AgendamentoView extends javax.swing.JFrame {
 
     public void setComboBoxCliente(JComboBox<String> comboBoxCliente) {
         this.comboBoxCliente = comboBoxCliente;
+    }
+
+    public JComboBox<String> getComboBoxFormaPagamento() {
+        return comboBoxFormaPagamento;
+    }
+
+    public void setComboBoxFormaPagamento(JComboBox<String> comboBoxFormaPagamento) {
+        this.comboBoxFormaPagamento = comboBoxFormaPagamento;
+    }
+
+    public JComboBox<String> getComboBoxProduto() {
+        return comboBoxProduto;
+    }
+
+    public void setComboBoxProduto(JComboBox<String> comboBoxProduto) {
+        this.comboBoxProduto = comboBoxProduto;
     }
 
     public JComboBox<String> getComboBoxServico() {
@@ -278,21 +344,28 @@ public class AgendamentoView extends javax.swing.JFrame {
     public void setComboBoxUsuario(JComboBox<String> comboBoxUsuario) {
         this.comboBoxUsuario = comboBoxUsuario;
     }
-    
+
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaObservacao;
-    private javax.swing.JButton butAgendar;
+    private javax.swing.JButton butGerarVenda;
     private javax.swing.JButton butVoltar;
     private javax.swing.JFormattedTextField campoData;
     private javax.swing.JFormattedTextField campoHora;
-    private javax.swing.JTextField campoValor;
+    private javax.swing.JTextField campoSubvalorProduto;
+    private javax.swing.JTextField campoSubvalorServico;
+    private javax.swing.JTextField campoValorTotal;
     private javax.swing.JComboBox<String> comboBoxCliente;
+    private javax.swing.JComboBox<String> comboBoxFormaPagamento;
+    private javax.swing.JComboBox<String> comboBoxProduto;
     private javax.swing.JComboBox<String> comboBoxServico;
     private javax.swing.JComboBox<String> comboBoxUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -301,7 +374,6 @@ public class AgendamentoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tableAgendamentos;
     // End of variables declaration//GEN-END:variables
@@ -310,8 +382,10 @@ public class AgendamentoView extends javax.swing.JFrame {
         controller.atualizarTabelaAgendamentos();
         controller.atualizarCliente();
         controller.atualizarServico();
-        controller.atualizarValor();
+        controller.atualizarValorServico();
+        controller.atualizarProduto();
         controller.atualizarUsuario();
+        controller.atualizarProduto();
     }
 
     public JTable getTableAgendamentos() {

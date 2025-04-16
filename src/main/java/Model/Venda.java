@@ -9,19 +9,47 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author allan
  */
+@Entity
 public class Venda{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Temporal(TemporalType.TIMESTAMP)
     private Date data;
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+    
+    @ManyToOne
+    @JoinColumn(name = "servico_id")
     private Servico servico;
+    
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
+    
     private double valorTotal;
+    
     private String formaPagamento;
 
     
@@ -29,8 +57,7 @@ public class Venda{
     }
 
     
-    public Venda(int id, String data, Cliente cliente, Servico servico, Produto produto, double valorTotal, String formaPagamento) {
-        this.id = id;
+    public Venda(String data, Cliente cliente, Servico servico, Usuario usuario, Produto produto, double valorTotal, String formaPagamento) {
         try {
             this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
         } catch (ParseException ex) {
@@ -38,40 +65,12 @@ public class Venda{
         }
         this.cliente = cliente;
         this.servico = servico;
+        this.usuario = usuario;
         this.produto = produto;
         this.valorTotal = valorTotal;
         this.formaPagamento = formaPagamento;
     }
 
-    
-    public Venda(int id, String data, Cliente cliente, Servico servico, double valorTotal, String formaPagamento) {
-        this.id = id;
-        try {
-            this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(Venda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.cliente = cliente;
-        this.servico = servico;
-        this.valorTotal = valorTotal;
-        this.formaPagamento = formaPagamento;
-    }
-
-    
-    public Venda(int id, String data, Cliente cliente, Produto produto, double valorTotal, String formaPagamento) {
-        this.id = id;
-        try {
-            this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(Venda.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.cliente = cliente;
-        this.produto = produto;
-        this.valorTotal = valorTotal;
-        this.formaPagamento = formaPagamento;
-    }
-
-    
     public int getId() {
         return id;
     }
@@ -82,6 +81,14 @@ public class Venda{
 
     public Date getData() {
         return data;
+    }
+    
+    public String getDataFormatada() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(data);
+    }
+    
+    public String getHoraFormatada() {
+        return new SimpleDateFormat("HH:mm").format(data);
     }
 
     public void setData(Date data) {
@@ -102,6 +109,14 @@ public class Venda{
 
     public void setServico(Servico servico) {
         this.servico = servico;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Produto getProduto() {
@@ -128,7 +143,7 @@ public class Venda{
         this.formaPagamento = formaPagamento;
     }
 
-    
+ 
     
 }
     

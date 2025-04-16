@@ -64,11 +64,19 @@ public class Produto extends Item{
         this.estoque = estoque;
     }
 
-    public double calcularValorVenda() {
-        double valor = this.valorCusto * (1 + this.taxaLucro/100);
-        return valor;
+    @Override
+    public double getValorVenda() {
+        return valorVenda = this.valorCusto * (1 + this.taxaLucro/100);
+    }
+
+    @Override
+    public void setValorVenda(double valorVenda) {
+        this.valorVenda = valorVenda;
     }
     
-
+    @Override
+    public String toString(){
+        return super.getDescricao();
+    }
     
 }

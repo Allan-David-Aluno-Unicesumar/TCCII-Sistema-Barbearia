@@ -41,6 +41,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuCadastrarServico = new javax.swing.JMenuItem();
         menuOperacao = new javax.swing.JMenu();
         menuAgendamento = new javax.swing.JMenuItem();
+        menuVenda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,6 +100,15 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
         menuOperacao.add(menuAgendamento);
 
+        menuVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/icon-venda-24.png"))); // NOI18N
+        menuVenda.setText("Venda");
+        menuVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendaActionPerformed(evt);
+            }
+        });
+        menuOperacao.add(menuVenda);
+
         jMenuBar1.add(menuOperacao);
 
         setJMenuBar(jMenuBar1);
@@ -144,6 +154,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         
         controller.abrirTelaCadastrarProduto();
     }//GEN-LAST:event_menuCadastrarProdutoActionPerformed
+
+    private void menuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendaActionPerformed
+        
+        controller.abrirTelaVenda();
+    }//GEN-LAST:event_menuVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,5 +206,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCadastrarServico;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuOperacao;
+    private javax.swing.JMenuItem menuVenda;
     // End of variables declaration//GEN-END:variables
 }
