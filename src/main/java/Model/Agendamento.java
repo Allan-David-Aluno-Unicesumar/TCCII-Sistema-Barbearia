@@ -6,6 +6,7 @@ package Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,18 +113,48 @@ public class Agendamento {
         return data;
     }
     
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
     public String getDataFormatada() {
         return new SimpleDateFormat("dd/MM/yyyy").format(data);
+    }
+    
+    public void setDataFormatada(String dataFormatada) {
+        try {
+            this.data = new SimpleDateFormat("dd/MM/yyyy").parse(dataFormatada);
+        } catch (ParseException e) {
+            e.printStackTrace(); // ou logue adequadamente
+        }
     }
     
     public String getHoraFormatada() {
         return new SimpleDateFormat("HH:mm").format(data);
     }
+    
+    public void setHoraFormatada(String horaFormatada) {
+        try {
+            // Pegando apenas a hora, mantendo a data atual
+            Date hora = new SimpleDateFormat("HH:mm").parse(horaFormatada);
 
-    public void setData(Date data) {
-        this.data = data;
+            // Atualizando apenas hora e minuto na variável 'data' existente
+            Calendar calData = Calendar.getInstance();
+            calData.setTime(this.data != null ? this.data : new Date()); // usa a data existente, ou data atual
+            Calendar calHora = Calendar.getInstance();
+            calHora.setTime(hora);
+
+            calData.set(Calendar.HOUR_OF_DAY, calHora.get(Calendar.HOUR_OF_DAY));
+            calData.set(Calendar.MINUTE, calHora.get(Calendar.MINUTE));
+            calData.set(Calendar.SECOND, 0);
+            calData.set(Calendar.MILLISECOND, 0);
+
+            this.data = calData.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace(); // ou logue adequadamente
+        }
     }
-
+    
     public String getObservacao() {
         return observacao;
     }

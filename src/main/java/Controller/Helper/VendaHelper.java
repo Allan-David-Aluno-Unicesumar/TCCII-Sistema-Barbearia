@@ -11,6 +11,7 @@ import Model.Servico;
 import Model.Usuario;
 import Model.Venda;
 import View.VendaView;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -104,6 +105,26 @@ public class VendaHelper implements IHelper{
         view.getCampoSubvalorProduto().setText(String.valueOf(valorProduto));
     }
     
+    public void setarSomaValores() {
+    
+        double valorServico = 0.0;
+        double valorProduto = 0.0;
+
+        try {
+            valorServico = Double.parseDouble(view.getCampoSubvalorServico().getText().trim().replace(",", "."));
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+
+        try {
+            valorProduto = Double.parseDouble(view.getCampoSubvalorProduto().getText().trim().replace(",", "."));
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+
+        double valorTotal = valorServico + valorProduto;
+        view.getCampoValorTotal().setText(String.valueOf(valorTotal));
+    }
     
     public Venda obterModelo(){
         String data = view.getCampoData().getText()+" "+view.getCampoHora().getText();
@@ -149,9 +170,31 @@ public class VendaHelper implements IHelper{
 
     }
 
-    
+    public Agendamento obterAgendamentoDaTabela(int linhaSelecionada) {
+        
+        DefaultTableModel model = (DefaultTableModel) view.getTableAgendamentos().getModel();
+        Agendamento agendamento = new Agendamento();
+        
+        agendamento.setCliente((Cliente) model.getValueAt(linhaSelecionada, 1));
+        agendamento.setServico((Servico) model.getValueAt(linhaSelecionada, 2));
+        agendamento.setBarbeiro((Usuario) model.getValueAt(linhaSelecionada, 3));
+        agendamento.setValor((double) model.getValueAt(linhaSelecionada, 4));
+        agendamento.setDataFormatada((String) model.getValueAt(linhaSelecionada, 5));
+        agendamento.setHoraFormatada((String) model.getValueAt(linhaSelecionada, 6));
+        
+        return agendamento;
+    }
 
+    public void preencherCampos(Agendamento agendamento) {
 
-    
+        view.getComboBoxCliente().setSelectedItem(agendamento.getCliente());
+        view.getComboBoxServico().setSelectedItem(agendamento.getServico());
+        view.getComboBoxUsuario().setSelectedItem(agendamento.getUsuario());
+        view.getCampoSubvalorServico().setText(String.valueOf(agendamento.getValor()));
+        view.getCampoData().setText(agendamento.getDataFormatada());
+        view.getCampoHora().setText(agendamento.getHoraFormatada());
+    }
+
+   
     
 }

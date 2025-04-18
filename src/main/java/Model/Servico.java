@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 
 /**
@@ -38,5 +39,17 @@ public class Servico extends Item{
         return super.getDescricao();
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Servico servico = (Servico) o;
+    return Objects.equals(id, servico.id); // Comparação por ID
+    }
+
+    @Override
+        public int hashCode() {
+        return Objects.hash(id);
+    }
     
 }

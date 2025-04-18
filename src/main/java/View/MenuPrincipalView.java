@@ -42,13 +42,16 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuOperacao = new javax.swing.JMenu();
         menuAgendamento = new javax.swing.JMenuItem();
         menuVenda = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/fundo-menu-principal.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        menuCadastro.setText("Cadastro");
+        menuCadastro.setText("Cadastros");
 
         menuCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/icon-cliente-24.png"))); // NOI18N
         menuCadastrarCliente.setText("Cliente");
@@ -89,7 +92,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuBar1.add(menuCadastro);
         menuCadastro.getAccessibleContext().setAccessibleName("");
 
-        menuOperacao.setText("Operação");
+        menuOperacao.setText("Operações");
 
         menuAgendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/icon-agendamento-24.png"))); // NOI18N
         menuAgendamento.setText("Agendamento");
@@ -110,6 +113,18 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuOperacao.add(menuVenda);
 
         jMenuBar1.add(menuOperacao);
+
+        jMenu1.setText("Relatórios");
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/icon-relatorio-venda-24.png"))); // NOI18N
+        jMenuItem1.setText("Venda");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/icon-caixa-24.png"))); // NOI18N
+        jMenuItem2.setText("Caixa");
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -198,7 +213,10 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuAgendamento;
     private javax.swing.JMenuItem menuCadastrarCliente;
     private javax.swing.JMenuItem menuCadastrarFornecedor;

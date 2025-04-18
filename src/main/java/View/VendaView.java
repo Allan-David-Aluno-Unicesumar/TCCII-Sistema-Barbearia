@@ -80,6 +80,11 @@ public class VendaView extends javax.swing.JFrame {
                 "Id", "Cliente", "Serviço", "Barbeiro", "Valor", "Data", "Hora"
             }
         ));
+        tableAgendamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableAgendamentosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableAgendamentos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 590, 160));
@@ -104,6 +109,14 @@ public class VendaView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(campoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 120, 30));
+
+        campoSubvalorProduto.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                campoSubvalorProdutoInputMethodTextChanged(evt);
+            }
+        });
         getContentPane().add(campoSubvalorProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 120, 30));
 
         getContentPane().add(comboBoxUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 120, 30));
@@ -170,6 +183,14 @@ public class VendaView extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Data");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, -1, -1));
+
+        campoSubvalorServico.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                campoSubvalorServicoInputMethodTextChanged(evt);
+            }
+        });
         getContentPane().add(campoSubvalorServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 120, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -215,12 +236,30 @@ public class VendaView extends javax.swing.JFrame {
     private void comboBoxServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxServicoItemStateChanged
         
         controller.atualizarValorServico();
+        controller.atualizarValorTotal();
     }//GEN-LAST:event_comboBoxServicoItemStateChanged
 
     private void comboBoxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxProdutoItemStateChanged
         
         controller.atualizarValorProduto();
+        controller.atualizarValorTotal();
     }//GEN-LAST:event_comboBoxProdutoItemStateChanged
+
+    private void campoSubvalorServicoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_campoSubvalorServicoInputMethodTextChanged
+
+    }//GEN-LAST:event_campoSubvalorServicoInputMethodTextChanged
+
+    private void campoSubvalorProdutoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_campoSubvalorProdutoInputMethodTextChanged
+
+    }//GEN-LAST:event_campoSubvalorProdutoInputMethodTextChanged
+
+    private void tableAgendamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAgendamentosMouseClicked
+        
+        int linhaSelecionada = tableAgendamentos.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            controller.setarAgendamentosEmCampos(linhaSelecionada);
+        }
+    }//GEN-LAST:event_tableAgendamentosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -384,8 +423,9 @@ public class VendaView extends javax.swing.JFrame {
         controller.atualizarServico();
         controller.atualizarValorServico();
         controller.atualizarProduto();
+        controller.atualizarValorProduto();
         controller.atualizarUsuario();
-        controller.atualizarProduto();
+        controller.atualizarValorTotal();
     }
 
     public JTable getTableAgendamentos() {

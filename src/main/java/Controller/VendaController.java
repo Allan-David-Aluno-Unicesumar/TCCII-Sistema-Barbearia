@@ -24,6 +24,8 @@ import View.VendaView;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -94,6 +96,22 @@ public class VendaController {
         
     }
     
+    public void atualizarProduto(){
+        
+        // Buscar lista de usuarios no banco de dados
+        EntityManager em = new JPAUtil().getEntityManager();
+        em.getTransaction().begin();
+            
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        List<Produto> produtos = produtoDAO.selectAll();
+            
+        em.getTransaction().commit();
+        em.close();
+        
+        // Exibir a lista no jComboBox
+        helper.preencherProdutos(produtos);
+    }
+    
     public void atualizarValorProduto(){
         
         Produto produto = helper.obterProduto();
@@ -116,20 +134,35 @@ public class VendaController {
         helper.preencherUsuarios(usuarios);
     }
     
-    public void atualizarProduto(){
+    public void atualizarValorTotal() {
         
-        // Buscar lista de usuarios no banco de dados
-        EntityManager em = new JPAUtil().getEntityManager();
-        em.getTransaction().begin();
-            
-        ProdutoDAO produtoDAO = new ProdutoDAO(em);
-        List<Produto> produtos = produtoDAO.selectAll();
-            
-        em.getTransaction().commit();
-        em.close();
+        view.getCampoSubvalorServico().getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+        });
         
-        // Exibir a lista no jComboBox
-        helper.preencherProdutos(produtos);
+        view.getCampoSubvalorProduto().getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                helper.setarSomaValores();
+            }
+        });
     }
     
     public void vender() {
@@ -157,6 +190,15 @@ public class VendaController {
         menuPrincipalView.setVisible(true);
         view.dispose();
     }
+
+    public void setarAgendamentosEmCampos(int linhaSelecionada) {
+        
+        Agendamento agendamento = helper.obterAgendamentoDaTabela(linhaSelecionada);
+        helper.preencherCampos(agendamento);
+        
+    }
+
+    
 
     
     
