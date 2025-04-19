@@ -8,6 +8,7 @@ import Controller.CadastroProdutoController;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
@@ -25,6 +26,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     public CadastroProdutoView() {
         initComponents();
         controller = new CadastroProdutoController(this);
+        iniciar();
     }
 
     /**
@@ -40,6 +42,8 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         campoEstoque = new javax.swing.JTextField();
         campoValorCusto = new javax.swing.JTextField();
         campoTaxaLucro = new javax.swing.JTextField();
+        comboBoxFornecedor = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
         campoQtd = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel = new javax.swing.JLabel();
@@ -61,42 +65,49 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                 butVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(butVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 205, -1));
-        getContentPane().add(campoEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 100, -1));
-        getContentPane().add(campoValorCusto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 100, -1));
-        getContentPane().add(campoTaxaLucro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 100, -1));
-        getContentPane().add(campoQtd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 100, -1));
+        getContentPane().add(butVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 205, -1));
+        getContentPane().add(campoEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 80, -1));
+        getContentPane().add(campoValorCusto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 80, -1));
+        getContentPane().add(campoTaxaLucro, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 80, -1));
+
+        getContentPane().add(comboBoxFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 190, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Fornecedor");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
+        getContentPane().add(campoQtd, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 80, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Estoque");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 100, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 100, -1));
 
         jLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel.setForeground(new java.awt.Color(255, 255, 255));
         jLabel.setText("Quantidade");
-        getContentPane().add(jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 100, -1));
+        getContentPane().add(jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 100, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Taxa de Lucro");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 100, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 100, -1));
 
         jLabel1.setFont(new java.awt.Font("Ink Free", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cadastro de Produto");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Descrição");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 70, -1));
-        getContentPane().add(campoDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 310, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 70, -1));
+        getContentPane().add(campoDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Valor Custo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         butSalvar.setBackground(new java.awt.Color(0, 0, 0));
         butSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -107,7 +118,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
                 butSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(butSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 205, -1));
+        getContentPane().add(butSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 205, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/fundo-cadastro-produto.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 610));
@@ -213,7 +224,14 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         this.campoValorCusto = campoValorCusto;
     }
 
-    
+    public JComboBox<String> getComboBoxFornecedor() {
+        return comboBoxFornecedor;
+    }
+
+    public void setComboBoxFornecedor(JComboBox<String> comboBoxFornecedor) {
+        this.comboBoxFornecedor = comboBoxFornecedor;
+    }
+
     
 
    
@@ -226,6 +244,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     private javax.swing.JTextField campoQtd;
     private javax.swing.JTextField campoTaxaLucro;
     private javax.swing.JTextField campoValorCusto;
+    private javax.swing.JComboBox<String> comboBoxFornecedor;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -233,5 +252,10 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
+
+    private void iniciar() {
+        controller.atualizarFornecedor();
+    }
 }

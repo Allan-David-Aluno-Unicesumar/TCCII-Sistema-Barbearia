@@ -67,7 +67,7 @@ public class VendaView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBoxFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Pix", "Débito", "Crédito" }));
+        comboBoxFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Dinheiro", "Pix", "Débito", "Crédito" }));
         getContentPane().add(comboBoxFormaPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 120, 30));
 
         getContentPane().add(comboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 120, 30));

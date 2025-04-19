@@ -5,6 +5,8 @@
 package Model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,18 +19,23 @@ public class Produto extends Item{
     private double taxaLucro;
     private int qtd;
     private int estoque;
+    
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
 
     
     public Produto() {
     }
 
     
-    public Produto(String descricao, double valorCusto, double taxaLucro, int qtd, int estoque) {
+    public Produto(String descricao, double valorCusto, double taxaLucro, int qtd, int estoque, Fornecedor fornecedor) {
         super(descricao);
         this.valorCusto = valorCusto;
         this.taxaLucro = taxaLucro;
         this.qtd = qtd;
         this.estoque = estoque;
+        this.fornecedor = fornecedor;
     }
     
     

@@ -5,12 +5,15 @@
 package Controller;
 
 import Controller.Helper.CadastroProdutoHelper;
+import Dao.FornecedorDAO;
 import Dao.JPAUtil;
 import Dao.ProdutoDAO;
+import Model.Fornecedor;
 import Model.Produto;
 import View.CadastroProdutoView;
 import View.MenuPrincipalView;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
@@ -29,6 +32,21 @@ public class CadastroProdutoController {
         this.helper = new CadastroProdutoHelper(view);
     }
     
+    public void atualizarFornecedor(){
+        
+        // Buscar lista de fornecedores no banco de dados
+        EntityManager em = new JPAUtil().getEntityManager();
+        em.getTransaction().begin();
+            
+        FornecedorDAO fornecedorDAO = new FornecedorDAO(em);
+        List<Fornecedor> fornecedores = fornecedorDAO.selectAll();
+            
+        em.getTransaction().commit();
+        em.close();
+        
+        // Exibir a lista no jComboBox
+        helper.preencherFornecedores(fornecedores);
+    }
     
     public void cadastrarProduto() throws SQLException{
         
