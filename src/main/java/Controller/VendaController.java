@@ -135,34 +135,32 @@ public class VendaController {
     }
     
     public void atualizarValorTotal() {
-        
-        view.getCampoSubvalorServico().getDocument().addDocumentListener(new DocumentListener() {
+    DocumentListener listener = criarDocumentListenerParaAtualizacao();
+    view.getCampoSubvalorServico().getDocument().addDocumentListener(listener);
+    view.getCampoSubvalorProduto().getDocument().addDocumentListener(listener);
+}
+
+    private DocumentListener criarDocumentListenerParaAtualizacao() {
+        return new DocumentListener() {
+            @Override
             public void insertUpdate(DocumentEvent e) {
-                helper.setarSomaValores();
+                atualizarSoma();
             }
 
+            @Override
             public void removeUpdate(DocumentEvent e) {
-                helper.setarSomaValores();
+                atualizarSoma();
             }
 
+            @Override
             public void changedUpdate(DocumentEvent e) {
-                helper.setarSomaValores();
-            }
-        });
-        
-        view.getCampoSubvalorProduto().getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) {
-                helper.setarSomaValores();
+                atualizarSoma();
             }
 
-            public void removeUpdate(DocumentEvent e) {
+            private void atualizarSoma() {
                 helper.setarSomaValores();
             }
-
-            public void changedUpdate(DocumentEvent e) {
-                helper.setarSomaValores();
-            }
-        });
+        };
     }
     
     public void vender() {
